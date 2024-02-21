@@ -1,3 +1,14 @@
-- name: PMD              
-  uses: pmd/pmd-github-action@v1.4.1
-  runs-on: PMD_Runner
+name: PMD Check
+
+on: [push, pull_request]
+
+jobs:
+  pmd-check:
+    name: PMD Check
+    runs-on: PMD_Runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: PMD Analysis
+        uses: pmd/pmd-github-action@v1.4.1
